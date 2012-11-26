@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @checkin.user
+%p
+  %b Location:
+  = @checkin.location
+%p
+  %b Remarks:
+  = @checkin.remarks
+
+= link_to 'Edit', edit_checkin_path(@checkin)
+\|
+= link_to 'Back', checkins_path

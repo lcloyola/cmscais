@@ -1,4 +1,6 @@
 Cmsschema::Application.routes.draw do
+  resources :checkins
+
   resources :subunits
 
   resources :logs
