@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @location.name
+%p
+  %b Longmin:
+  = @location.longmin
+%p
+  %b Longmax:
+  = @location.longmax
+%p
+  %b Latmin:
+  = @location.latmin
+%p
+  %b Latmax:
+  = @location.latmax
+%p
+  %b Iprange:
+  = @location.iprange
+
+= link_to 'Edit', edit_location_path(@location)
+\|
+= link_to 'Back', locations_path

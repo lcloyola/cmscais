@@ -11,7 +11,29 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121126072452) do
+ActiveRecord::Schema.define(:version => 20121126074425) do
+
+  create_table "locations", :force => true do |t|
+    t.string   "name"
+    t.decimal  "longmin",    :precision => 10, :scale => 0
+    t.decimal  "longmax",    :precision => 10, :scale => 0
+    t.decimal  "latmin",     :precision => 10, :scale => 0
+    t.decimal  "latmax",     :precision => 10, :scale => 0
+    t.text     "iprange"
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+  end
+
+  create_table "sublocations", :force => true do |t|
+    t.integer  "parent_id_id"
+    t.integer  "child_id_id"
+    t.text     "remarks"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "sublocations", ["child_id_id"], :name => "index_sublocations_on_child_id_id"
+  add_index "sublocations", ["parent_id_id"], :name => "index_sublocations_on_parent_id_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",    :null => false

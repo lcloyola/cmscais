@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  longmin: 9.99
+  longmax: 9.99
+  latmin: 9.99
+  latmax: 9.99
+  iprange: MyText
+
+two:
+  name: MyString
+  longmin: 9.99
+  longmax: 9.99
+  latmin: 9.99
+  latmax: 9.99
+  iprange: MyText
