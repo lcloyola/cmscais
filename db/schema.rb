@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121126135621) do
+ActiveRecord::Schema.define(:version => 20121126140800) do
 
   create_table "items", :force => true do |t|
     t.string   "name"
@@ -63,6 +63,18 @@ ActiveRecord::Schema.define(:version => 20121126135621) do
 
   add_index "sublocations", ["child_id"], :name => "index_sublocations_on_child_id"
   add_index "sublocations", ["parent_id"], :name => "index_sublocations_on_parent_id"
+
+  create_table "subunits", :force => true do |t|
+    t.integer  "parent_id"
+    t.integer  "child_id"
+    t.string   "relationship"
+    t.text     "remarks"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "subunits", ["child_id"], :name => "index_subunits_on_child_id"
+  add_index "subunits", ["parent_id"], :name => "index_subunits_on_parent_id"
 
   create_table "units", :force => true do |t|
     t.integer  "item_id"

@@ -1,0 +1,25 @@
+%h1 Listing subunits
+
+%table
+  %tr
+    %th Parent
+    %th Child
+    %th Relationship
+    %th Remarks
+    %th
+    %th
+    %th
+
+  - @subunits.each do |subunit|
+    %tr
+      %td= subunit.parent
+      %td= subunit.child
+      %td= subunit.relationship
+      %td= subunit.remarks
+      %td= link_to 'Show', subunit
+      %td= link_to 'Edit', edit_subunit_path(subunit)
+      %td= link_to 'Destroy', subunit, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Subunit', new_subunit_path

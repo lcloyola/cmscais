@@ -1,0 +1,22 @@
+= form_for @subunit do |f|
+  - if @subunit.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@subunit.errors.count, "error")} prohibited this subunit from being saved:"
+      %ul
+        - @subunit.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :parent
+    = f.text_field :parent
+  .field
+    = f.label :child
+    = f.text_field :child
+  .field
+    = f.label :relationship
+    = f.text_field :relationship
+  .field
+    = f.label :remarks
+    = f.text_area :remarks
+  .actions
+    = f.submit 'Save'

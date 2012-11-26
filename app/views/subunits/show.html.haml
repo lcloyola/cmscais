@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Parent:
+  = @subunit.parent
+%p
+  %b Child:
+  = @subunit.child
+%p
+  %b Relationship:
+  = @subunit.relationship
+%p
+  %b Remarks:
+  = @subunit.remarks
+
+= link_to 'Edit', edit_subunit_path(@subunit)
+\|
+= link_to 'Back', subunits_path
