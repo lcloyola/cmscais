@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121126134852) do
+ActiveRecord::Schema.define(:version => 20121126135139) do
 
   create_table "items", :force => true do |t|
     t.string   "name"
@@ -30,6 +30,17 @@ ActiveRecord::Schema.define(:version => 20121126134852) do
     t.datetime "created_at",                                :null => false
     t.datetime "updated_at",                                :null => false
   end
+
+  create_table "logs", :force => true do |t|
+    t.integer  "unit_id"
+    t.integer  "properties_id"
+    t.text     "value"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "logs", ["properties_id"], :name => "index_logs_on_properties_id"
+  add_index "logs", ["unit_id"], :name => "index_logs_on_unit_id"
 
   create_table "properties", :force => true do |t|
     t.integer  "item_id"

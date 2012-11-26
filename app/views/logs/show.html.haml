@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Unit:
+  = @log.unit
+%p
+  %b Properties:
+  = @log.properties
+%p
+  %b Value:
+  = @log.value
+
+= link_to 'Edit', edit_log_path(@log)
+\|
+= link_to 'Back', logs_path

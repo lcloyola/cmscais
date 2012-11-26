@@ -1,4 +1,6 @@
 Cmsschema::Application.routes.draw do
+  resources :logs
+
   resources :properties
 
   resources :units
