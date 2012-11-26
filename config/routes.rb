@@ -1,4 +1,6 @@
 Cmsschema::Application.routes.draw do
+  resources :items
+
   resources :locations
 
   devise_for :users
