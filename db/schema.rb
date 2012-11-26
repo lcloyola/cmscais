@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121126133101) do
+ActiveRecord::Schema.define(:version => 20121126133653) do
 
   create_table "items", :force => true do |t|
     t.string   "name"
@@ -41,6 +41,21 @@ ActiveRecord::Schema.define(:version => 20121126133101) do
 
   add_index "sublocations", ["child_id_id"], :name => "index_sublocations_on_child_id_id"
   add_index "sublocations", ["parent_id_id"], :name => "index_sublocations_on_parent_id_id"
+
+  create_table "units", :force => true do |t|
+    t.integer  "item_id"
+    t.integer  "user_id"
+    t.integer  "location_id"
+    t.string   "name"
+    t.boolean  "is_public"
+    t.text     "remarks"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "units", ["item_id"], :name => "index_units_on_item_id"
+  add_index "units", ["location_id"], :name => "index_units_on_location_id"
+  add_index "units", ["user_id"], :name => "index_units_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",    :null => false

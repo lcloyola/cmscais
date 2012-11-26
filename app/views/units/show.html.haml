@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Item:
+  = @unit.item
+%p
+  %b User:
+  = @unit.user
+%p
+  %b Location:
+  = @unit.location
+%p
+  %b Name:
+  = @unit.name
+%p
+  %b Is public:
+  = @unit.is_public
+%p
+  %b Remarks:
+  = @unit.remarks
+
+= link_to 'Edit', edit_unit_path(@unit)
+\|
+= link_to 'Back', units_path
