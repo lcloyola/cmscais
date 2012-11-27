@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121127093614) do
+ActiveRecord::Schema.define(:version => 20121127114144) do
 
   create_table "checkins", :force => true do |t|
     t.integer  "user_id"
@@ -33,13 +33,13 @@ ActiveRecord::Schema.define(:version => 20121127093614) do
 
   create_table "locations", :force => true do |t|
     t.string   "name"
-    t.decimal  "longmin",    :precision => 10, :scale => 0
-    t.decimal  "longmax",    :precision => 10, :scale => 0
-    t.decimal  "latmin",     :precision => 10, :scale => 0
-    t.decimal  "latmax",     :precision => 10, :scale => 0
     t.text     "iprange"
-    t.datetime "created_at",                                :null => false
-    t.datetime "updated_at",                                :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.float    "longmin"
+    t.float    "latmin"
+    t.float    "longmax"
+    t.float    "latmax"
   end
 
   create_table "logs", :force => true do |t|
