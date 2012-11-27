@@ -6,7 +6,10 @@ class Unit < ActiveRecord::Base
   belongs_to :location
   has_many :logs
 
-  has_many :subunits
+  has_many :subunits, :foreign_key => :parent_id, :dependent => :destroy
+  has_many :parents, :through => :subunits, :source => :parent, :dependent => :destroy
+  has_many :children, :through => :reverse_subunits, :source => :child, :dependent => :destroy
+  has_many :reverse_subunits, :foreign_key => :child_id, :class_name => "Subunit", :dependent => :destroy
 
   validates_presence_of :item, :user, :location
 end
