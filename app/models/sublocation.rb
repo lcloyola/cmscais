@@ -1,5 +1,9 @@
 class Sublocation < ActiveRecord::Base
-  belongs_to :parent_id
-  belongs_to :child_id
-  attr_accessible :remarks
+  attr_accessible :remarks, :parent_id, :child_id
+
+  belongs_to :parent, :class_name => "Location"
+  belongs_to :child, :class_name => "Location"
+
+  validates_presence_of :parent_id, :child_id
 end
+
