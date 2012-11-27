@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121126141358) do
+ActiveRecord::Schema.define(:version => 20121127093614) do
 
   create_table "checkins", :force => true do |t|
     t.integer  "user_id"
@@ -44,13 +44,13 @@ ActiveRecord::Schema.define(:version => 20121126141358) do
 
   create_table "logs", :force => true do |t|
     t.integer  "unit_id"
-    t.integer  "properties_id"
     t.text     "value"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "property_id"
   end
 
-  add_index "logs", ["properties_id"], :name => "index_logs_on_properties_id"
+  add_index "logs", ["property_id"], :name => "index_logs_on_property_id"
   add_index "logs", ["unit_id"], :name => "index_logs_on_unit_id"
 
   create_table "properties", :force => true do |t|
@@ -63,6 +63,19 @@ ActiveRecord::Schema.define(:version => 20121126141358) do
   end
 
   add_index "properties", ["item_id"], :name => "index_properties_on_item_id"
+
+  create_table "rails_admin_histories", :force => true do |t|
+    t.text     "message"
+    t.string   "username"
+    t.integer  "item"
+    t.string   "table"
+    t.integer  "month",      :limit => 2
+    t.integer  "year",       :limit => 8
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+  end
+
+  add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
 
   create_table "sublocations", :force => true do |t|
     t.text     "remarks"
