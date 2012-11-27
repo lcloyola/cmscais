@@ -30,6 +30,7 @@ gem 'acts_as_commentable'
 gem 'barby'
 gem 'chunky_png'
 gem 'rmagick'
+gem 'ffaker'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
