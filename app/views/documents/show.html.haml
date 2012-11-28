@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Unit:
+  = @document.unit
+%p
+  %b Name:
+  = @document.name
+%p
+  %b Remarks:
+  = @document.remarks
+%p
+  %b File:
+  = @document.file
+
+= link_to 'Edit', edit_document_path(@document)
+\|
+= link_to 'Back', documents_path

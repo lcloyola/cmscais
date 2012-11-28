@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121127114144) do
+ActiveRecord::Schema.define(:version => 20121128022434) do
 
   create_table "checkins", :force => true do |t|
     t.integer  "user_id"
@@ -23,6 +23,20 @@ ActiveRecord::Schema.define(:version => 20121127114144) do
 
   add_index "checkins", ["location_id"], :name => "index_checkins_on_location_id"
   add_index "checkins", ["user_id"], :name => "index_checkins_on_user_id"
+
+  create_table "documents", :force => true do |t|
+    t.integer  "unit_id"
+    t.string   "name"
+    t.text     "remarks"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "documents", ["unit_id"], :name => "index_documents_on_unit_id"
 
   create_table "items", :force => true do |t|
     t.string   "name"

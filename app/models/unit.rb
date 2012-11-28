@@ -5,6 +5,7 @@ class Unit < ActiveRecord::Base
   belongs_to :user
   belongs_to :location
   has_many :logs
+  has_many :documents
 
   has_many :subunits, :foreign_key => :parent_id, :dependent => :destroy
   has_many :parents, :through => :subunits, :source => :parent, :dependent => :destroy
