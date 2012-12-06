@@ -9,5 +9,10 @@ class Location < ActiveRecord::Base
   has_many :reverse_sublocations, :foreign_key => :parent_id, :class_name => "Sublocation", :dependent => :destroy
 
   validates_presence_of :name
+
+  def self.find_by_coordinates(lat, lng)
+    return Location.where("latmax >= ? AND latmin <= ? AND longmax >= ? AND longmin <= ?", lat, lat, lng, lng)
+    #return self.latmax_greater_than(lat).latmin_less_than(lat).longmax_greater_than(lng).longmin_less_than(lng)
+  end
 end
 

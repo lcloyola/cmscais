@@ -1,6 +1,7 @@
 class LocationsController < ApplicationController
   # GET /locations
   # GET /locations.json
+
   def index
     @locations = Location.all
 
@@ -81,3 +82,4 @@ class LocationsController < ApplicationController
     end
   end
 end
+
