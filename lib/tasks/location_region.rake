@@ -40,10 +40,10 @@ namespace :db do
     regions.each do |r|
       props = {
         name: r,
-        longmin: 126.60438370,
-        longmax: 116.70291930,
-        latmin: 19.57402410,
-        latmax: 4.613444299999999
+        longmax: 126.60438370,
+        longmin: 116.70291930,
+        latmax: 19.57402410,
+        latmin: 4.613444299999999
       }
       location = Location.create! props
     end
@@ -73,10 +73,10 @@ namespace :db do
     reg4a.each do |p|
       props = {
         name: p,
-        longmin: 126.60438370,
-        longmax: 116.70291930,
-        latmin: 19.57402410,
-        latmax: 4.613444299999999
+        longmax: 126.60438370,
+        longmin: 116.70291930,
+        latmax: 19.57402410,
+        latmin: 4.613444299999999
       }
       location = Location.create! props
       subprops ={
@@ -89,10 +89,10 @@ namespace :db do
     reg4b.each do |p|
       props = {
         name: p,
-        longmin: 126.60438370,
-        longmax: 116.70291930,
-        latmin: 19.57402410,
-        latmax: 4.613444299999999
+        longmax: 126.60438370,
+        longmin: 116.70291930,
+        latmax: 19.57402410,
+        latmin: 4.613444299999999
       }
       location = Location.create! props
       subprops ={
