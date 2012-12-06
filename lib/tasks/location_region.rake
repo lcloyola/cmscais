@@ -43,7 +43,8 @@ namespace :db do
         longmax: 126.60438370,
         longmin: 116.70291930,
         latmax: 19.57402410,
-        latmin: 4.613444299999999
+        latmin: 4.613444299999999,
+        iprange: "192.168.1.0/24"
       }
       location = Location.create! props
     end
@@ -55,7 +56,8 @@ namespace :db do
           longmin: 126.60438370,
           longmax: 116.70291930,
           latmin: 19.57402410,
-          latmax: 4.613444299999999
+          latmax: 4.613444299999999,
+          iprange: "192.168.2.0/24"
         }
         location = Location.create! props
         subprops ={
@@ -76,7 +78,8 @@ namespace :db do
         longmax: 126.60438370,
         longmin: 116.70291930,
         latmax: 19.57402410,
-        latmin: 4.613444299999999
+        latmin: 4.613444299999999,
+        iprange: "192.168.3.0/24"
       }
       location = Location.create! props
       subprops ={
@@ -92,7 +95,8 @@ namespace :db do
         longmax: 126.60438370,
         longmin: 116.70291930,
         latmax: 19.57402410,
-        latmin: 4.613444299999999
+        latmin: 4.613444299999999,
+        iprange: "192.168.4.0/24"
       }
       location = Location.create! props
       subprops ={

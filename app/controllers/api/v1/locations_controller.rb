@@ -6,6 +6,8 @@ class Api::V1::LocationsController < API::V1::ApplicationController
     @locations = Location.all
     if params[:lat].present? && params[:lng].present?
       @locations = Location.find_by_coordinates(params[:lat], params[:lng])
+    elsif params[:ip].present?
+      @locations = Location.find_by_ipaddress(params[:ip])
     end
 
     respond_with @locations
