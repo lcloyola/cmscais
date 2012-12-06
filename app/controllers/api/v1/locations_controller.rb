@@ -8,6 +8,8 @@ class Api::V1::LocationsController < API::V1::ApplicationController
       @locations = Location.find_by_coordinates(params[:lat], params[:lng])
     elsif params[:ip].present?
       @locations = Location.find_by_ipaddress(params[:ip])
+    elsif params[:name].present?
+      @locations = Location.search_by_name(params[:name])
     end
 
     respond_with @locations

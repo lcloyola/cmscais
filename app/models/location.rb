@@ -25,8 +25,14 @@ class Location < ActiveRecord::Base
     end
     return locations
   end
+
+  def self.search_by_name(query)
+    return Location.find(:all, :conditions => ["name LIKE ?", '%' + query + '%'])
+  end
+
   def ip_range
     return IPAddr.new(self.iprange.to_s)
   end
+
 end
 
