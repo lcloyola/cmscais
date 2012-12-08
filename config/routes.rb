@@ -5,6 +5,7 @@ Cmsschema::Application.routes.draw do
       resources :tokens,:only => [:create, :destroy]
       resources :locations, :only => [:create, :index, :show]
       resources :checkins, :only => [:index, :create, :show]
+      resources :items, :only => [:index, :show]
     end
   end
 
