@@ -18,7 +18,10 @@ class Api::V1::LocationsController < API::V1::ApplicationController
   def show
     @location = Location.find(params[:id])
 
-    respond_with @location
+    #respond_with @location
+    respond_with(@location, :include => {:children => {:only => [:id, :name, :longmin, :longmax, :latmin, :latmax]}},
+                      :only => [:created_at, :remarks])
+
   end
 
   def create

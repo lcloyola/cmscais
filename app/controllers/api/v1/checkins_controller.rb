@@ -5,7 +5,7 @@ class Api::V1::CheckinsController < API::V1::ApplicationController
   # return current user last checkin
   def index
     checkin = lastcheckin = current_user.checkins.last
-    respond_with(checkin, :include => {:location => {:only => [:name, :longmin, :longmax, :latmin, :latmax]}},
+    respond_with(checkin, :include => {:location => {:only => [:id, :name, :longmin, :longmax, :latmin, :latmax]}},
                           :only => [:created_at, :remarks])
   end
 
@@ -16,14 +16,15 @@ class Api::V1::CheckinsController < API::V1::ApplicationController
     if current_user.present? && location.present?
       checkin = Checkin.create(:user_id => current_user.id, :location_id => location.id, :remarks => params[:remarks])
     end
-    render :json => {:checkin => checkin, :location => checkin.location}
+    respond_with(checkin, :include => {:location => {:only => [:id, :name, :longmin, :longmax, :latmin, :latmax]}},
+                          :only => [:created_at, :remarks])
   end
 
   # return current user x number of last checkins
   def show
     checkin = current_user.checkins.order("id DESC").limit(params[:id])
 
-    respond_with(checkin, :include => {:location => {:only => [:name, :longmin, :longmax, :latmin, :latmax]}},
+    respond_with(checkin, :include => {:location => {:only => [:id, :name, :longmin, :longmax, :latmin, :latmax]}},
                           :only => [:created_at, :remarks])
   end
 end
