@@ -18,6 +18,6 @@ class Unit < ActiveRecord::Base
   validates_presence_of :item, :user, :location
 
   scope :is_public, :conditions => ['is_public = ?', true]
-
+  scope :is_private, :conditions => ['is_public = ?', false]
 end
 
