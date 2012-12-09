@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121208143217) do
+ActiveRecord::Schema.define(:version => 20121209082702) do
+
+  create_table "accessibles", :force => true do |t|
+    t.integer  "unit_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "accessibles", ["unit_id"], :name => "index_accessibles_on_unit_id"
+  add_index "accessibles", ["user_id"], :name => "index_accessibles_on_user_id"
 
   create_table "checkins", :force => true do |t|
     t.integer  "user_id"
