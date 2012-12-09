@@ -13,5 +13,8 @@ class Unit < ActiveRecord::Base
   has_many :reverse_subunits, :foreign_key => :parent_id, :class_name => "Subunit", :dependent => :destroy
 
   validates_presence_of :item, :user, :location
+
+  scope :is_public, :conditions => ['is_public = ?', true]
+
 end
 

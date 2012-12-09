@@ -11,9 +11,8 @@ class Api::V1::ItemsController < API::V1::ApplicationController
   def show
     item = Item.find(params[:id])
     if item.is_public? || current_user.present?
-      respond_with(item, :include => {:units => {:only => [:id, :name, :remarks],
-                                                   :limit => 4 }},
-                          :only => [:id, :name, :remarks])
+      render :json => {:item => item, :units => item.units.is_public.limit(3)}
+      # to do: consider per user restrictions // #is_accessible
     end
   end
 end
