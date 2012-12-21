@@ -1,5 +1,4 @@
 class Api::V1::LocationsController < API::V1::ApplicationController
-
   before_filter :parse_body_json, only: :create
 
   def index
@@ -20,8 +19,7 @@ class Api::V1::LocationsController < API::V1::ApplicationController
 
     #respond_with @location
     respond_with(@location, :include => {:children => {:only => [:id, :name, :longmin, :longmax, :latmin, :latmax]}},
-                      :only => [:created_at, :remarks])
-
+                      :only => [:created_at, :name, :remarks])
   end
 
   def create

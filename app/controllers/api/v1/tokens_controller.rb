@@ -1,5 +1,8 @@
 class Api::V1::TokensController  < ApplicationController
   skip_before_filter :verify_authenticity_token
+  skip_before_filter :check_localization
+  skip_before_filter :check_privacy
+
   respond_to :json
 
   def create

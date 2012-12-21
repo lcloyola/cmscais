@@ -8,10 +8,15 @@ class Api::V1::ItemsController < API::V1::ApplicationController
   end
 
   # return item if accessible (public or user logged in)
+  # TODO: specify limit of units
   def show
     item = Item.find(params[:id])
     if current_user.present?
-      private_units = current_user.accessible_units.is_private.where(:item_id => item.id)
+      if PREFERENCES['privacy'] == 'custom'
+        private_units = current_user.accessible_units.is_private.where(:item_id => item.id)
+      else
+        private_units = current_user.is_private.where(:item_id => item.id)
+      end
     end
 
     if item.is_public? || current_user.present?
