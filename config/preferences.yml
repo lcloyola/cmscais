@@ -61,4 +61,63 @@ development:
 test:
 
 production:
+  # privacy
+  #   true: units/items are available to logged in users only (token required)
+  #   false:
+  #       units/items where is_public == true are available to public (no token)
+  #       locations are available to unregistered users
+  #   custom:
+  #       public units are available to unregistered users
+  #       private units may be accessible to certain users based on user_access table
+  #       locations are available to unregistered users
+  privacy: custom
+
+  # localization
+  #   true:
+  #     only units in the same location as user may be accessed. user location based on last checkin.
+  #     only logged in users may view units regardless of value of privacy variable
+  #   false: units are visible regardless of user location
+  localization: false
+
+  # locations
+  #   true: allow user
+  #   false: only admin
+  location_create: true
+  location_destroy: false
+  location_update: false
+
+  # items
+  #   true: allow user
+  #   false: only admin
+  item_create: true
+  item_destroy: false
+  item_update: false
+
+  # units
+  #   true: allow user
+  #   false: only admin
+  unit_create: true
+  unit_destroy: false
+  unit_update: false
+
+  # properties
+  #   true: allow user
+  #   false: only admin
+  properties_create: true
+  properties_destroy: false
+  properties_update: false
+
+  # logs
+  #   true: allow user
+  #   false: only admin
+  logs_create: true
+  logs_destroy: false
+  logs_update: false
+
+  # documents
+  #   true: allow user
+  #   false: only admin
+  docs_create: true
+  docs_destroy: false
+  docs_update: false
 
