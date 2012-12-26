@@ -22,7 +22,9 @@ class Unit < ActiveRecord::Base
 
   def as_json(options={})
     super(:except => [:item_id, :location_id]).merge({:item => item.name,
-                                                            :location => location.name})
+                                                            :location => self.location.name,
+                                                            :logs => self.logs
+                                                            })
   end
 end
 

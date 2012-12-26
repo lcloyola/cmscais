@@ -20,16 +20,12 @@ class Api::V1::UnitsController < API::V1::ApplicationController
 
   def show
     unit = Unit.find(params[:id])
-    if current_user.present?
-      if PREFERENCES['privacy'] == 'custom'
-        private_units = current_user.accessible_units.is_private
-      else
-        private_units = item.units.is_private
-      end
-    end
-
-    if unit.is_public? || current_user.present?
-      render :json => {:unit => unit}
+    if unit.is_public? || current_user.accessible_units.include?(unit)
+      respond_with(unit, :except => [:item_id, :location_id],
+                         :include => {:item => {:only => [:name]},
+                             :location => {:only => [:name]},
+                             :logs => {}
+                            } )
     else render :json => {:status => "Unauthorized"}, :status => :unauthorized
     end
   end

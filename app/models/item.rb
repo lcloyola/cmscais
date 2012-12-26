@@ -3,5 +3,9 @@ class Item < ActiveRecord::Base
   has_many :units
   has_many :properties
   scope :is_public, :conditions => ['is_public = ?', true]
+
+  def as_json(options={})
+    super().merge({:properties => self.properties})
+  end
 end
 

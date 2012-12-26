@@ -2,7 +2,7 @@ class API::ApplicationController < ApplicationController
 
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
-  respond_to :json
+  respond_to :json, :xml
 
   def parse_body_json
     @attributes = JSON.parse(request.body.read)
@@ -11,6 +11,5 @@ class API::ApplicationController < ApplicationController
   def record_not_found
     head :not_found
   end
-
 end
 
