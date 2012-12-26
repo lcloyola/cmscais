@@ -22,10 +22,11 @@ class Api::V1::UnitsController < API::V1::ApplicationController
     unit = Unit.find(params[:id])
     if unit.is_public? || current_user.accessible_units.include?(unit)
       respond_with(unit, :except => [:item_id, :location_id],
-                         :include => {:item => {:only => [:name]},
+                         :methods => [:documents],
+                         :include => {:item => {:only => [:name], :methods => [:properties]},
                              :location => {:only => [:name]},
-                             :logs => {}
-                            } )
+                             :logs => {},
+                             })
     else render :json => {:status => "Unauthorized"}, :status => :unauthorized
     end
   end
