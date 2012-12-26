@@ -19,5 +19,10 @@ class Unit < ActiveRecord::Base
 
   scope :is_public, :conditions => ['is_public = ?', true]
   scope :is_private, :conditions => ['is_public = ?', false]
+
+  def as_json(options={})
+    super(:except => [:item_id, :location_id]).merge({:item => item.name,
+                                                            :location => location.name})
+  end
 end
 
