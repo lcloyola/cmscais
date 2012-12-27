@@ -15,7 +15,15 @@ development:
   #     only units in the same location as user may be accessed. user location based on last checkin.
   #     only logged in users may view units regardless of value of privacy variable
   #   false: units are visible regardless of user location
-  localization: false
+  localization: true
+
+
+  # network localization
+  #   true:
+  #     only units in the same network as user may be accessed. user network based on last login.
+  #     only logged in users may view units regardless of value of privacy variable
+  #   false: units are visible regardless of user network details
+  network_localization: false
 
   # locations
   #   true: allow user
@@ -77,7 +85,15 @@ production:
   #     only units in the same location as user may be accessed. user location based on last checkin.
   #     only logged in users may view units regardless of value of privacy variable
   #   false: units are visible regardless of user location
-  localization: false
+  localization: true
+
+
+  # network localization
+  #   true:
+  #     only units in the same network as user may be accessed. user network based on last login.
+  #     only logged in users may view units regardless of value of privacy variable
+  #   false: units are visible regardless of user network details
+  network_localization: false
 
   # locations
   #   true: allow user

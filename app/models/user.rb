@@ -11,5 +11,23 @@ class User < ActiveRecord::Base
 
   has_many :accessibles
   has_many :accessible_units, :through => :accessibles, :source => :unit
+
+  def last_checkin
+    return self.checkins.last
+  end
+
+  def permitted_units
+    if PREFERENCES['privacy'] == 'custom'
+        units = self.accessible_units.is_private
+      else
+        units = Unit.is_private
+      end
+
+    if PREFERENCES['localization'] == true
+      units = units.location_accessible(self.last_checkin.location)
+    end
+
+    return units
+  end
 end
 
