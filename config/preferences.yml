@@ -12,18 +12,20 @@ development:
 
   # localization
   #   true:
-  #     only units in the same location as user may be accessed. user location based on last checkin.
+  #     only units in the same location/network as user may be accessed. user location/network based on last checkin/ last login ip.
   #     only logged in users may view units regardless of value of privacy variable
   #   false: units are visible regardless of user location
   localization: true
 
 
-  # network localization
-  #   true:
+  # localization type
+  #   location:
+  #     only units in the same location as user may be accessed. user location based on last checkin.
+  #     only logged in users may view units regardless of value of privacy variable
+  #   network:
   #     only units in the same network as user may be accessed. user network based on last login.
   #     only logged in users may view units regardless of value of privacy variable
-  #   false: units are visible regardless of user network details
-  network_localization: false
+  localization_type: network
 
   # locations
   #   true: allow user
@@ -82,18 +84,20 @@ production:
 
   # localization
   #   true:
-  #     only units in the same location as user may be accessed. user location based on last checkin.
+  #     only units in the same location/network as user may be accessed. user location/network based on last checkin/ last login ip.
   #     only logged in users may view units regardless of value of privacy variable
   #   false: units are visible regardless of user location
   localization: true
 
 
-  # network localization
-  #   true:
+  # localization type
+  #   location:
+  #     only units in the same location as user may be accessed. user location based on last checkin.
+  #     only logged in users may view units regardless of value of privacy variable
+  #   network:
   #     only units in the same network as user may be accessed. user network based on last login.
   #     only logged in users may view units regardless of value of privacy variable
-  #   false: units are visible regardless of user network details
-  network_localization: false
+  localization_type: location
 
   # locations
   #   true: allow user

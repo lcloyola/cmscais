@@ -1,4 +1,5 @@
 class Unit < ActiveRecord::Base
+  require 'ipaddr'
   attr_accessible :is_public, :name, :remarks, :child_ids, :parent_ids, :item_id, :location_id, :user_id
 
   belongs_to :item
@@ -29,6 +30,15 @@ class Unit < ActiveRecord::Base
                                                             :logs => self.logs.group_by(&:property_id),
                                                             :documents => self.documents
                                                             })
+  end
+  def self.network_accessible(ipaddress)
+    net1 = IPAddr.new(ipaddress)
+    units = []
+    Location.all.each do |l|
+      range = IPAddr.new(l.iprange)
+      units << l.units if range.include?(net1)
+    end
+    return units
   end
 end
 

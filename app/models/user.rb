@@ -17,16 +17,16 @@ class User < ActiveRecord::Base
   end
 
   def permitted_units
-    if PREFERENCES['privacy'] == 'custom'
-        units = self.accessible_units.is_private
-      else
-        units = Unit.is_private
-      end
-
     if PREFERENCES['localization'] == true
-      units = units.location_accessible(self.last_checkin.location)
+      if PREFERENCES['localization_type'] == 'network'
+        units = Unit.is_private.network_accessible(self.current_sign_in_ip)
+      else
+        units = Unit.is_private.location_accessible(self.last_checkin.location)
+      end
     end
-
+    if PREFERENCES['privacy'] == 'custom'
+      units = self.accessible_units.is_private
+    end
     return units
   end
 end
