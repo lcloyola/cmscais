@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121230075835) do
+ActiveRecord::Schema.define(:version => 20121230120220) do
 
   create_table "accessibles", :force => true do |t|
     t.integer  "unit_id"
@@ -117,6 +117,12 @@ ActiveRecord::Schema.define(:version => 20121230075835) do
   end
 
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
+
+  create_table "send_updates", :force => true do |t|
+    t.datetime "schedule"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "sublocations", :force => true do |t|
     t.text     "remarks"
