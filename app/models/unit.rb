@@ -25,8 +25,7 @@ class Unit < ActiveRecord::Base
   scope :is_public, :conditions => ['is_public = ?', true]
   scope :is_private, :conditions => ['is_public = ?', false]
   scope :location_accessible, lambda { |location|
-    where('location_id = ?', location.id)
-  }
+    where('location_id = ?', location.id) }
 
   def as_json(options={})
     super(:except => [:item_id, :location_id]).merge({:item => item.name,
@@ -44,6 +43,11 @@ class Unit < ActiveRecord::Base
     end
     return units
   end
+
+  def self.with_changes(last_update)
+    Unit.find(:all, :conditions => ["updated_at >= ?", last_update])
+  end
+
 private
   def post_to_clients
     if PREFERENCES['filter_type'] == 'change'

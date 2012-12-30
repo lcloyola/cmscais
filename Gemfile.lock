@@ -35,6 +35,7 @@ GEM
     bootstrap-sass (2.2.1.1)
       sass (~> 3.2)
     builder (3.0.4)
+    chronic (0.9.0)
     chunky_png (1.2.6)
     cocaine (0.4.2)
     coffee-rails (3.2.2)
@@ -175,6 +176,9 @@ GEM
       multi_json (~> 1.0, >= 1.0.2)
     warden (1.2.1)
       rack (>= 1.0)
+    whenever (0.8.1)
+      activesupport (>= 2.3.4)
+      chronic (>= 0.6.3)
 
 PLATFORMS
   ruby
@@ -200,3 +204,4 @@ DEPENDENCIES
   therubyracer
   thin
   uglifier (>= 1.0.3)
+  whenever
