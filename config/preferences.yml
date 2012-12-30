@@ -8,14 +8,14 @@ development:
   #       public units are available to unregistered users
   #       private units may be accessible to certain users based on user_access table
   #       locations are available to unregistered users
-  privacy: custom
+  privacy: true
 
   # localization
   #   true:
   #     only units in the same location/network as user may be accessed. user location/network based on last checkin/ last login ip.
   #     only logged in users may view units regardless of value of privacy variable
   #   false: units are visible regardless of user location
-  localization: true
+  localization: false
 
 
   # localization type

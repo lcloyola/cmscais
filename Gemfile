@@ -32,6 +32,8 @@ gem 'barby'
 gem 'chunky_png'
 gem 'rmagick'
 gem 'ffaker'
+gem 'httparty'
+gem 'thin'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
