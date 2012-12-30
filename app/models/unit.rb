@@ -20,13 +20,13 @@ class Unit < ActiveRecord::Base
 
   validates_presence_of :item, :user, :location
 
+  after_save :post_to_clients
+
   scope :is_public, :conditions => ['is_public = ?', true]
   scope :is_private, :conditions => ['is_public = ?', false]
   scope :location_accessible, lambda { |location|
     where('location_id = ?', location.id)
   }
-
-  after_save :post_to_clients
 
   def as_json(options={})
     super(:except => [:item_id, :location_id]).merge({:item => item.name,
@@ -46,9 +46,12 @@ class Unit < ActiveRecord::Base
   end
 private
   def post_to_clients
-    body = {:item => { :name => "delay job 2"}}
-    header = {:auth_token => "sAFQTVysozBGGQxNPBwz" }
-    SendUpdate.perform("", body, header)
+    if PREFERENCES['filter_type'] == 'change'
+      self.created_at_changed? ? type = "new record" : type = "update record"
+      body = {:update_type => type, :entity => "unit",
+              :unit =>  self.as_json}
+      SendUpdate.perform(body)
+    end
   end
 end
 
