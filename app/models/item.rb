@@ -4,8 +4,19 @@ class Item < ActiveRecord::Base
   has_many :properties
   scope :is_public, :conditions => ['is_public = ?', true]
 
+  after_save :post_to_clients
+
   def as_json(options={})
     super().merge({:properties => self.properties})
+  end
+private
+  def post_to_clients
+    if PREFERENCES['filter_type'] == 'change'
+      self.created_at_changed? ? type = "new record" : type = "update record"
+      body = {:update_type => type, :entity => "item",
+              :item =>  self.as_json}
+      SendUpdate.perform(body)
+    end
   end
 end
 

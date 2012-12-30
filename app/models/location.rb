@@ -12,6 +12,8 @@ class Location < ActiveRecord::Base
 
   validates_presence_of :name
 
+  before_save :post_to_clients
+
   def self.find_by_coordinates(lat, lng)
     return Location.where("latmax >= ? AND latmin <= ? AND longmax >= ? AND longmin <= ?", lat, lat, lng, lng)
   end
@@ -33,6 +35,14 @@ class Location < ActiveRecord::Base
   def ip_range
     return IPAddr.new(self.iprange.to_s)
   end
-
+private
+  def post_to_clients
+    if PREFERENCES['filter_type'] == 'change'
+      self.created_at_changed? ? type = "new record" : type = "update record"
+      body = {:update_type => type, :entity => "location",
+              :location =>  self.as_json}
+      SendUpdate.perform(body)
+    end
+  end
 end
 

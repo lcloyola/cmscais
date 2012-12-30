@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
   has_many :accessibles
   has_many :accessible_units, :through => :accessibles, :source => :unit
 
+  before_save :post_to_clients
+
   def last_checkin
     return self.checkins.last
   end
@@ -28,6 +30,16 @@ class User < ActiveRecord::Base
       units = self.accessible_units.is_private
     end
     return units
+  end
+
+private
+  def post_to_clients
+    if PREFERENCES['filter_type'] == 'change'
+      self.created_at_changed? ? type = "new record" : type = "update record"
+      body = {:update_type => type, :entity => "user",
+              :user =>  self.as_json}
+      SendUpdate.perform(body)
+    end
   end
 end
 
