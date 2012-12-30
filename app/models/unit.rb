@@ -50,7 +50,7 @@ class Unit < ActiveRecord::Base
 
 private
   def post_to_clients
-    if PREFERENCES['filter_type'] == 'change'
+    if PREFERENCES['change_base']
       self.created_at_changed? ? type = "new record" : type = "update record"
       body = {:update_type => type, :entity => "unit",
               :unit =>  self.as_json}

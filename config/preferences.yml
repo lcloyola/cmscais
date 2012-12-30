@@ -44,11 +44,12 @@ development:
   #   ["unit", "item", "property", "log", "document", "location", "subunit", "checkin", "user"]
   flood_options: ["unit", "item", "property", "log", "document"]
 
-  # filter_type
+  # filter types
   # if dissemination == true
-  #   change: change-based
-  #   time: time-based
-  filter_type: change
+  #   change-based
+  #   time-based
+  change_base: true
+  time_base: true
 
   # update_frequency
   # if filter_type: time

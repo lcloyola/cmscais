@@ -11,9 +11,13 @@ class Property < ActiveRecord::Base
     super(:except => [:item_id, :updated_at, :created_at]).merge({:item => self.item.name, :logs => self.logs})
   end
 
+  def self.with_changes(last_update)
+    Property.find(:all, :conditions => ["updated_at >= ?", last_update])
+  end
+
 private
   def post_to_clients
-    if PREFERENCES['filter_type'] == 'change'
+    if PREFERENCES['change_base']
       self.created_at_changed? ? type = "new record" : type = "update record"
       body = {:update_type => type, :entity => "property",
               :property =>  self.as_json}
