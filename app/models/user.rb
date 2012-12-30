@@ -31,7 +31,9 @@ class User < ActiveRecord::Base
     end
     return units
   end
-
+  def self.with_changes(last_update)
+    User.find(:all, :conditions => ["updated_at >= ?", last_update])
+  end
 private
   def post_to_clients
     if PREFERENCES['filter_type'] == 'change'
