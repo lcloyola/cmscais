@@ -26,7 +26,7 @@ class Unit < ActiveRecord::Base
     where('location_id = ?', location.id)
   }
 
-  after_save :post_to_server
+  after_save :post_to_clients
 
   def as_json(options={})
     super(:except => [:item_id, :location_id]).merge({:item => item.name,
@@ -45,11 +45,10 @@ class Unit < ActiveRecord::Base
     return units
   end
 private
-  def post_to_server
-    #HTTParty.post("http://localhost:3000/units.json", :body => {:unit => { :item_id => '1', :user_id => "1", :location_id => "1", :name => "booya"}})
-    #HTTParty.post("http://localhost:3000/api/v1/tokens.json", :body => { :email => "admin@admin.com", :password => "pass.1"})
-    #HTTParty.post("http://localhost:3000/items.json", :body => {:item => { :name => "ahihi"}}, :header => {:auth_token => "sAFQTVysozBGGQxNPBwz" })
-    HTTParty.post("http://localhost:8080/items.json", :body => {:item => { :name => "aaa9"}}, :header => {:auth_token => "sAFQTVysozBGGQxNPBwz" })
+  def post_to_clients
+    body = {:item => { :name => "delay job 2"}}
+    header = {:auth_token => "sAFQTVysozBGGQxNPBwz" }
+    SendUpdate.perform("", body, header)
   end
 end
 
