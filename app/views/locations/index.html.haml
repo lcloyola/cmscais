@@ -1,29 +1,52 @@
 %h1 Listing locations
-
+#map{ :style=> "position: fixed; right: 10px; bottom: 10px; width: 600px; height: 700px;"}
 %table
   %tr
+    %th id
     %th Name
-    %th Longmin
-    %th Longmax
-    %th Latmin
-    %th Latmax
-    %th Iprange
+    %th Long
+    %th Lat
     %th
     %th
     %th
 
   - @locations.each do |location|
     %tr
+      %td= location.id
       %td= location.name
       %td= location.longmin
-      %td= location.longmax
       %td= location.latmin
-      %td= location.latmax
-      %td= location.iprange
       %td= link_to 'Show', location
       %td= link_to 'Edit', edit_location_path(location)
-      %td= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' }
+      %td= link_to 'Destroy', location, :confirm => 'Are you sure?', :method => :delete
 
 %br
 
 = link_to 'New Location', new_location_path
+
+:javascript
+  var locations = #{raw @locations_array};
+  var map = new google.maps.Map(document.getElementById('map'), {
+  zoom: 6,
+  center: new google.maps.LatLng(14.35, 121),
+  mapTypeId: google.maps.MapTypeId.ROADMAP
+  });
+
+  var infowindow = new google.maps.InfoWindow();
+
+  var marker, i;
+
+  for (i = 0; i < locations.length; i++) {
+    marker = new google.maps.Marker({
+      position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+      map: map
+    });
+
+    google.maps.event.addListener(marker, 'click', (function(marker, i) {
+      return function() {
+        infowindow.setContent(locations[i][0]);
+        infowindow.open(map, marker);
+      }
+    })(marker, i));
+  }
+

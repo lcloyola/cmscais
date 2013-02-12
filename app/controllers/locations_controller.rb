@@ -4,6 +4,7 @@ class LocationsController < ApplicationController
 
   def index
     @locations = Location.all
+    @locations_array = @locations.collect {|x| [x.name, x.latmin, x.longmin, x.id]}
 
     respond_to do |format|
       format.html # index.html.erb
