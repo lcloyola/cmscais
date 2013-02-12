@@ -33,7 +33,6 @@ gem 'chunky_png'
 gem 'rmagick'
 gem 'ffaker'
 gem 'httparty'
-gem 'thin'
 gem 'delayed_job_active_record'
 gem 'whenever'
 # To use ActiveModel has_secure_password

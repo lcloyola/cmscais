@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121230120220) do
+ActiveRecord::Schema.define(:version => 20130106101205) do
 
   create_table "accessibles", :force => true do |t|
     t.integer  "unit_id"
@@ -86,9 +86,10 @@ ActiveRecord::Schema.define(:version => 20121230120220) do
   create_table "logs", :force => true do |t|
     t.integer  "unit_id"
     t.text     "value"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.integer  "property_id"
+    t.boolean  "is_active",   :default => true
   end
 
   add_index "logs", ["property_id"], :name => "index_logs_on_property_id"

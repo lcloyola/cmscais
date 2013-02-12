@@ -28,7 +28,7 @@ class Unit < ActiveRecord::Base
     where('location_id = ?', location.id) }
 
   def as_json(options={})
-    super(:except => [:item_id, :location_id]).merge({:item => item.name,
+    super(:except => [:item_id, :location_id, :user_id]).merge({:item => item.name,
                                                             :location => self.location.name,
                                                             :logs => self.logs.group_by(&:property_id),
                                                             :documents => self.documents

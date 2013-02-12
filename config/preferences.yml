@@ -8,7 +8,7 @@ development:
   #       public units are available to unregistered users
   #       private units may be accessible to certain users based on user_access table
   #       locations are available to unregistered users
-  privacy: true
+  privacy: false
 
   # localization
   #   true:
@@ -30,7 +30,7 @@ development:
   # dissemination
   #   true: updates / context-changes will be delivered to clients in users table
   #   false: no updates will be sent to clients
-  dissemination: true
+  dissemination: false
 
   # dissemination type
   #   selection:
@@ -48,8 +48,8 @@ development:
   # if dissemination == true
   #   change-based
   #   time-based
-  change_base: true
-  time_base: true
+  change_base: false
+  time_base: false
 
   # update_frequency
   # if filter_type: time

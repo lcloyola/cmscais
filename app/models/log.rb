@@ -1,7 +1,7 @@
 class Log < ActiveRecord::Base
   belongs_to :unit
   belongs_to :property
-  attr_accessible :value, :unit_id, :property_id
+  attr_accessible :value, :unit_id, :property_id, :is_active
   validates_presence_of :unit_id, :property_id
 
   before_save :post_to_clients

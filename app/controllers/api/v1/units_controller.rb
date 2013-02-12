@@ -8,6 +8,7 @@ class Api::V1::UnitsController < API::V1::ApplicationController
     public_units = Unit.is_public
 
     if current_user.present?
+      # fix this!!!
         private_units = current_user.permitted_units
       if PREFERENCES['localization'] == true
         public_units = public_units.location_accessible(current_user.last_checkin.location)
