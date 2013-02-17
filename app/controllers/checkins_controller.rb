@@ -2,7 +2,7 @@ class CheckinsController < ApplicationController
   # GET /checkins
   # GET /checkins.json
   def index
-    @checkins = Checkin.all
+    @checkins = current_user.checkins
 
     respond_to do |format|
       format.html # index.html.erb
@@ -41,6 +41,7 @@ class CheckinsController < ApplicationController
   # POST /checkins.json
   def create
     @checkin = Checkin.new(params[:checkin])
+    @checkin.user = current_user
 
     respond_to do |format|
       if @checkin.save

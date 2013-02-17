@@ -7,11 +7,8 @@
           %li= msg
 
   .field
-    = f.label :user
-    = f.text_field :user
-  .field
     = f.label :location
-    = f.text_field :location
+    = collection_select :checkin, :location_id, Location.all, :id, :name
   .field
     = f.label :remarks
     = f.text_area :remarks
