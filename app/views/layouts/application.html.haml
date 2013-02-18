@@ -9,6 +9,10 @@
             = stylesheet_link_tag    "application", :media => "all"
             = javascript_include_tag "application"
             = csrf_meta_tags
+            :css
+              body {
+                padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+              }
             %script{:src => "http://html5shim.googlecode.com/svn/trunk/html5.js"}
             
             %script{:src => "http://maps.google.com/maps/api/js?sensor=false", :type => "text/javascript"}
@@ -35,6 +39,7 @@
                 %li
                   %a{:href => "/users/sign_in"} User Login
               - else
+                %li= link_to "Checkins", checkins_path
                 %li= link_to "Items", items_path
                 %li= link_to "Locatons", locations_path
                 %li= link_to "Units", units_path

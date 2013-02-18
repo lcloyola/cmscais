@@ -18,7 +18,7 @@ class Unit < ActiveRecord::Base
   has_many :accessibles
   has_many :accessors, :through => :accessibles, :source => :user
 
-  validates_presence_of :item, :user, :location
+  validates_presence_of :item, :user
 
   after_save :post_to_clients
 

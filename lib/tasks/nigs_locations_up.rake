@@ -1,5 +1,5 @@
 namespace :nigs do
-  task :locations => :environment do
+  task :locations_up => :environment do
     File.open("#{Rails.public_path}/pois.txt", "r").each_line do |line|
       data = line.gsub("-","")
       data = data.gsub(" ","+")

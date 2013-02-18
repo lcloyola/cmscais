@@ -1,0 +1,17 @@
+Caloocan City Probability of Rain
+Las Pinas City Probability of Rain
+Makati City Probability of Rain
+Malabon City Probability of Rain
+Mandaluyong City Probability of Rain
+Manila Probability of Rain
+Marikina City Probability of Rain
+Muntinlupa City Probability of Rain
+Navotas Probability of Rain
+Paranaque City Probability of Rain
+Pasay City Probability of Rain
+Pasig City Probability of Rain
+Pateros Probability of Rain
+Quezon City Probability of Rain
+San Juan Probability of Rain
+Taguig Probability of Rain
+Valenzuela City Probability of Rain
